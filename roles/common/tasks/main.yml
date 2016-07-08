@@ -1,0 +1,21 @@
+---
+
+- name: check if pip is installed
+  command: 'pip --version'
+  ignore_errors: true
+  changed_when: false
+  register: pip_command_output
+
+- name: get pip
+  get_url: url='https://bootstrap.pypa.io/get-pip.py' dest=/tmp/get-pip.py mode=0755
+  when: pip_command_output.rc != 0
+
+- name: install pip
+  command: 'python /tmp/get-pip.py'
+  when: pip_command_output.rc != 0
+
+- name: install pip packages
+  pip: name={{ item.name }} version={{ item.version }}
+  with_items:
+    - {name: 'Flask', version: '0.10.1'}
+    - {name: 'PyYAML', version: '3.11'}

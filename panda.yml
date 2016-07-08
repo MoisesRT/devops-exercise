@@ -12,3 +12,11 @@
   roles:
     - { role: nodejs, tags: nodejs }
     - { role: bamboo, tags: bamboo }
+
+- name: Panda services
+  hosts: all
+  sudo: yes
+  roles:
+    - { role: common, tags: common}
+    - { role: big-panda, tags: big-panda }
+    - { role: panda-service, tags: panda-service }

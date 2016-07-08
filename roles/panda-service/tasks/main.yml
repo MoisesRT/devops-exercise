@@ -1,2 +1,15 @@
 ---
-# tasks file for panda-service
+
+- name: create the nessecary directory
+  file: path="{{ service_dir }}" state=directory mode=0755
+
+- name: copy panda service
+  copy: src=panda-service dest=/app mode=0755
+  register: service
+
+- name: copy the panda-service upstart service
+  template: src=panda-service.conf dest=/etc/init/panda-service.conf mode=0644
+
+- name: restart panda service
+  service: name=panda-service state=restarted
+  when: service.changed

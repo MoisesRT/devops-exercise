@@ -1,0 +1,6 @@
+---
+
+flask:
+  listen_address: '0.0.0.0'
+  app_port: 8082
+  debug: false

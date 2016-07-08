@@ -1,2 +1,15 @@
 ---
-# tasks file for big-panda
+
+- name: create the nessecary directory
+  file: path="{{ service_dir }}" state=directory mode=0755
+
+- name: copy big-panda service
+  copy: src=big-panda dest=/app mode=0755
+  register: service
+
+- name: copy the big-panda upstart service
+  template: src=big-panda.conf dest=/etc/init/big-panda.conf mode=0644
+
+- name: restart big-panda service
+  service: name=big-panda state=restarted
+  when: service.changed

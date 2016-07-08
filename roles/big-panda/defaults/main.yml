@@ -1,2 +1,4 @@
 ---
-# defaults file for big-panda
+
+service_dir: '/app'
+log_file: '/var/log/big-panda.log'

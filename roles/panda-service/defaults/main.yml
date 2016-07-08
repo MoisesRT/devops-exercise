@@ -1,2 +1,4 @@
 ---
-# defaults file for panda-service
+
+service_dir: '/app'
+log_file: '/var/log/panda-service.log'
