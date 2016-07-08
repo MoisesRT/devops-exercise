@@ -29,9 +29,8 @@ def main():
 
     parser = create_parser()
     args = parser.parse_args()
-
     # Runs the Ansible command in a simple way
-    #os.system(command_build())
+    os.system(command_build())
 
 
 if __name__ == '__main__':
