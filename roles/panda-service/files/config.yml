@@ -1,0 +1,8 @@
+---
+app:
+  resources_dir_path: './resources'
+
+flask:
+  listen_address: '0.0.0.0'
+  app_port: 5000
+  debug: true
